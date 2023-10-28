@@ -4,7 +4,7 @@ import ListElement from "./ListElement";
 import {
   RootState,
   addNewNote,
-} from "../datastorage/features/counter/counterSlice";
+} from "../datastorage/features/counter/noteSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export interface NewNote {
@@ -22,12 +22,9 @@ const ToDoList = () => {
 
   const addNote = () => {
     if (
-      dateOfNote !== "" &&
-      dateOfNote !== " " &&
-      titleOfNote !== "" &&
-      titleOfNote !== " " &&
-      contentOfNote !== "" &&
-      contentOfNote !== " "
+      dateOfNote.trim() !== "" &&
+      titleOfNote.trim() !== "" &&
+      contentOfNote.trim() !== ""
     ) {
       const newNote: NewNote = {
         dateOfNote,
@@ -35,7 +32,6 @@ const ToDoList = () => {
         contentOfNote,
       };
       dispatch(addNewNote(newNote));
-      console.log(newNote);
 
       setDateOfNote("");
       setTitleOfNote("");

@@ -15,16 +15,19 @@ const initialState: NoteArr = {
   note: [],
 };
 
-export const counterSlice = createSlice({
+export const noteSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
     addNewNote: (state, action) => {
       state.note.unshift(action.payload);
     },
+    deleteNote: (state, action) => {
+      state.note = state.note.filter((el) => action.payload !== el.titleOfNote);
+    },
   },
 });
 
-export const { addNewNote } = counterSlice.actions;
+export const { addNewNote, deleteNote } = noteSlice.actions;
 
-export default counterSlice.reducer;
+export default noteSlice.reducer;
