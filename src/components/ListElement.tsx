@@ -1,4 +1,4 @@
-import { deleteNote } from "../datastorage/features/counter/noteSlice";
+import { deleteNote } from "../datastorage/features/notes/noteSlice";
 import { NewNote } from "./ToDoList";
 import { useDispatch, useSelector } from "react-redux";
 

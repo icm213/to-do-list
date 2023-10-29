@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import ListElement from "./ListElement";
-import {
-  RootState,
-  addNewNote,
-} from "../datastorage/features/counter/noteSlice";
+import { RootState, addNewNote } from "../datastorage/features/notes/noteSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export interface NewNote {
