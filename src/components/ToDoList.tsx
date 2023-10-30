@@ -49,30 +49,38 @@ const ToDoList = () => {
   };
 
   return (
-    <div>
-      <div>
-        <Input
-          value={dateOfNote}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleDateChange(e)
-          }
-          placeholder="Date"
-        />
-        <Input
-          value={titleOfNote}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleTitleChange(e)
-          }
-          placeholder="Title"
-        />
-        <Input
-          value={contentOfNote}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleContentChange(e)
-          }
-          placeholder="Content"
-        />
-        <button onClick={() => addNote()}>add note</button>
+    <div className=" flex-col border-2 justify-center items-end mt-10">
+      <div className=" flex-col space-y-5 bg-lime-400 p-10 border-2 justify-center items-center rounded-3xl">
+        <div>
+          <Input
+            value={dateOfNote}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleDateChange(e)
+            }
+            placeholder="Date"
+          />
+        </div>
+        <div>
+          <Input
+            value={titleOfNote}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleTitleChange(e)
+            }
+            placeholder="Title"
+          />
+        </div>
+        <div>
+          <Input
+            value={contentOfNote}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleContentChange(e)
+            }
+            placeholder="Content"
+          />
+        </div>
+        <div>
+          <button onClick={() => addNote()}>add note</button>
+        </div>
       </div>
       <div>
         {notes.map((note, idx) => (

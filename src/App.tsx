@@ -4,8 +4,7 @@ import ToDoList from "./components/ToDoList";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+    <div className="bg-lime-200 border-2 flex justify-center items-start min-h-screen">
       <ToDoList />
     </div>
   );

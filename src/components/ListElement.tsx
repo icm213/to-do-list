@@ -6,7 +6,7 @@ const ListElement = ({ children }: { children: NewNote }) => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex justify-center items-center flex-col space-y-5">
       <span>{children.dateOfNote}</span>
       <span>{children.titleOfNote}</span>
       <span>{children.contentOfNote}</span>
