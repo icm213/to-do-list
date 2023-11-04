@@ -49,8 +49,8 @@ const ToDoList = () => {
   };
 
   return (
-    <div className=" flex-col border-2 justify-center items-end mt-10">
-      <div className=" flex-col space-y-5 bg-lime-400 p-10 border-2 justify-center items-center rounded-3xl">
+    <div className=" flex-col justify-center items-end mt-10">
+      <div className=" flex-col space-y-5 bg-gradient-to-tr from-green-500 to-lime-500 shadow-2xl box-shadow-2xl p-10 justify-center items-center rounded-3xl">
         <div>
           <Input
             value={dateOfNote}
