@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
 import ToDoList from "./components/ToDoList";
+import Calendar from "./pages/calendar";
 
 const App = () => {
   return (
-    <div className="bg-lime-200 flex justify-center items-start min-h-screen">
+    <div className="bg-white flex justify-center items-start min-h-screen">
       <ToDoList />
+      <Calendar />
     </div>
   );
 };
