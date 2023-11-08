@@ -1,57 +1,117 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsGearFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import Day from "../components/Day";
+
+export interface DayProps {
+  dayOfMonth: number;
+  nameOfDay: string;
+}
 
 const Calendar = () => {
   const [monthState, setMonthState] = useState("");
+  const [daysArr, setDaysArr] = useState<DayProps[]>();
 
-  const displayMonth = () => {
-    const month = new Date().getMonth();
+  useEffect(() => {
+    const setDays = () => {
+      const days: DayProps[] = [];
+      const today = new Date().getTime();
+      const twentyFourHours = 86_400_000;
+
+      for (let i = 0; i < 7; i++) {
+        const day = {
+          dayOfMonth: new Date(today + twentyFourHours * i).getDate(),
+          nameOfDay: displayDayOfWeek(today + twentyFourHours * i),
+        };
+        days.push(day);
+      }
+      setDaysArr((prev) => days);
+    };
+    setDays();
+  }, []);
+
+  const displayDayOfWeek = (date = new Date().getTime()) => {
+    const dayOfWeek = new Date(date).getDay();
+    let dayName;
+
+    switch (dayOfWeek) {
+      case 0:
+        dayName = "Sun";
+        break;
+      case 1:
+        dayName = "Mon";
+        break;
+      case 2:
+        dayName = "Tue";
+        break;
+      case 3:
+        dayName = "Wed";
+        break;
+      case 4:
+        dayName = "Thu";
+        break;
+      case 5:
+        dayName = "Fri";
+        break;
+      default:
+        dayName = "Sat";
+        break;
+    }
+    return dayName;
+  };
+
+  const displayMonth = (date = new Date().getTime()) => {
+    const month = new Date(date).getMonth();
+
+    let monthName;
 
     switch (month) {
       case 0:
-        setMonthState("January");
+        monthName = "January";
         break;
       case 1:
-        setMonthState("February");
+        monthName = "February";
         break;
       case 2:
-        setMonthState("March");
+        monthName = "March";
         break;
       case 3:
-        setMonthState("April");
+        monthName = "April";
         break;
       case 4:
-        setMonthState("May");
+        monthName = "May";
         break;
       case 5:
-        setMonthState("June");
+        monthName = "June";
         break;
       case 6:
-        setMonthState("July");
+        monthName = "July";
         break;
       case 7:
-        setMonthState("August");
+        monthName = "August";
         break;
       case 8:
-        setMonthState("September");
+        monthName = "September";
         break;
       case 9:
-        setMonthState("October");
+        monthName = "October";
         break;
       case 10:
-        setMonthState("November");
+        monthName = "November";
         break;
       case 11:
-        setMonthState("December");
+        monthName = "December";
         break;
       default:
-        setMonthState("Unable to display month");
+        monthName = "Unable to display month";
         break;
     }
+    return monthName;
   };
 
-  useEffect(() => displayMonth(), [monthState]);
+  useEffect(() => {
+    setMonthState(displayMonth());
+  }, [monthState, daysArr]);
 
   return (
     <div className="w-70 p-10">
@@ -68,6 +128,11 @@ const Calendar = () => {
         <button className="bg-green-400 text-white  rounded-full py-2 px-4">
           Add Task
         </button>
+      </div>
+      <div className="flex gap-4">
+        {daysArr?.map((day, idx) => (
+          <Day key={idx}>{day}</Day>
+        ))}
       </div>
       <div> {/*notes*/}</div>
     </div>
